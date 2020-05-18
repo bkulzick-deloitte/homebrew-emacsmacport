@@ -55,7 +55,7 @@ class EmacsMac < Formula
   depends_on "d-bus" if build.with? "dbus"
   depends_on "gnutls"
   depends_on "librsvg" if build.with? "rsvg"
-  depends_on "libxml2" if build.with? "xml2"
+  depends_on "libxml2"
   depends_on "glib" => :optional
   depends_on "imagemagick" => :optional
   depends_on "jansson" => :optional
@@ -112,7 +112,8 @@ class EmacsMac < Formula
       "--enable-mac-app=#{prefix}",
       "--with-gnutls",
     ]
-    args << "--with-modules" if build.with? "modules"
+    args << "--with-modules"
+    args << "--with-xml2"
     args << "--with-rsvg" if build.with? "rsvg"
 
     if build.with? "jansson"
